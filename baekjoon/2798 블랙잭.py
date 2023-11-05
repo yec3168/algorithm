@@ -26,9 +26,30 @@ def blackjack(n, m, list):
                         #print(result)
     return result
 
+# 재귀방식
+result = 0
+def dfs(i, cnt, sum, m, list):
+    global result
+    
+    if cnt == 3 and result < sum and sum <=m:
+        result = sum
+    elif cnt < 3 and i < len(list):
+        dfs(i+1, cnt+1, sum + list[i], m, list)
+        dfs(i+1, cnt, sum, m, list)
+    
+    return result
+
+
 n, m = map(int, input().split())
 
 list = list(map(int, input().split()))
 
 print(blackjack(n, m, list))
+
+print(dfs(0, 0, 0, m, list))
+
+
+
+
+
 
