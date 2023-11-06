@@ -42,3 +42,4 @@ for i in range(n):
 
 print(search_chess(temp))
    
+#미완성
