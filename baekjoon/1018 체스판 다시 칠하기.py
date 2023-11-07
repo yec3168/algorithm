@@ -6,25 +6,34 @@
 # 8<= n, m <= 50
 
 import copy
+
 def search_chess(temp):
     global n, m
     result = 1000
-    aa = []
-    aa= copy.deepcopy(temp)
+
     for i in range(n):
         for j in range(m):
             if i + 8 <= n and j + 8 <= m: 
-                count = 0
-                aa =copy.deepcopy(temp)
+                w_count = 0
+                b_count = 0
                 for x in range(i, i+8):
-                    for y in range(j+1, j+8):
+                    for y in range(j, j+8):
                         #print (x, y)
-                        if aa[x][y-1] == aa[x][y]:
-                            count +=1
+                        #짝수면
+                        if (x+y) % 2 == 0:
+                            if temp[x][y] != 'W':
+                                w_count +=1
+                            else:
+                                b_count +=1
+                        #홀수면
+                        else:
+                            if temp[x][y] !='W':
+                                b_count +=1
+                            else:
+                                w_count +=1
                 
-                print(count)
-                result = min(result, count)
-                print("result : ", result)
+                result = min(result,  min(w_count, b_count))
+                #print("result : ", result)
     return result
 
 n, m = map(int, input().split())
