@@ -21,12 +21,6 @@ def search_chess(temp):
                         #print (x, y)
                         if aa[x][y-1] == aa[x][y]:
                             count +=1
-                            print("x : ",x, "y : ",y, "aa[x][y-1] :  ", aa[x][y-1], "aa[x][y] : ",aa[x][y], "aa[x][y+1] : ", aa[x][y+1])
-                            if aa[x][y] == "W":
-                                aa[x][y]=="B"
-                            elif aa[x][y] =="B":
-                                aa[x][y] = "W"
-                            print("aa[x][y-1] :  ", aa[x][y-1], "aa[x][y] : ",aa[x][y], "aa[x][y+1] : ", aa[x][y+1])    
                 
                 print(count)
                 result = min(result, count)
