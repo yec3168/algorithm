@@ -5,6 +5,7 @@
 """
 ex) 300cm 랜선을 140짜리 랜선을 만들려면 20cm는 버려야함.
 """
+# 다시풀어보기 -> 푼 시간 한시간 반( 힌트 참고 )
 # 반복문
 def binary_search(start, end):
     global nums, k, n, max_cm
