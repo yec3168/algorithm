@@ -1,46 +1,36 @@
-#dfs로 풀며 (0, 0)에서 (n,m)로 가는데 아래 오른쪽만 보면 될 듯?
-
 from collections import deque
 
-dx = [1, 0, -1, 0] #아래 오른쪽 위 왼쪽
-dy = [0, 1, 0, -1]
-
-def bfs(maps, start_x, start_y, n, m):
-    visited = [[False]*m for _ in range(n)]
-
+def bfs(maps, n, m):
     queue = deque()
-    queue.append((start_x, start_y))
-    visited[start_x][start_y] = True
 
-    #print(queue)
-    #print(visited)
+    queue.append((0, 0))
 
-    # queue가 빌 때까지
+    dx = [0, 1 ,0 ,-1] # 오, 아, 왼, 위
+    dy = [1, 0, -1, 0]
     while queue:
-        start_x, start_y = queue.popleft()
+        x, y = queue.popleft()
+
         for i in range(4):
-            now_x = start_x + dx[i]
-            now_y = start_y + dy[i]
-            if now_x >=0 and now_x < n and now_y >= 0 and now_y < m:
-                #방문한적 없으면
-                if maps[now_x][now_y] == 1:
-                    if visited[now_x][now_y] == False:
-                        queue.append((now_x, now_y))
-                        visited[now_x][now_y] = True
-                        maps[now_x][now_y] = maps[start_x][start_y] + 1
+            nx = x + dx[i]
+            ny = y + dy[i]
+            
+            # 범위안에 든다면
+            if 0 <= nx and nx < n and 0 <= ny and ny < m:
+                if maps[nx][ny] == 1: # 벽이 아니면서 처음 방문
+                    queue.append((nx, ny))
+                    maps[nx][ny] = maps[x][y] + 1
+    
     if maps[n-1][m-1] == 1:
         return -1
+    else: 
+        return maps[n-1][m-1] 
     
-    return maps[n-1][m-1]
 
 def solution(maps):
     n = len(maps)
     m = len(maps[0])
-    
-    if maps[n-2][m-1] == 0 and maps[n-1][m-2] ==0:
-        return -1
-    
-    result = bfs(maps, 0, 0, n, m)
+
+    result = bfs(maps, n, m)
     return result
 
 
