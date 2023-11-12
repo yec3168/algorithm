@@ -19,6 +19,13 @@ def solution(n, left, right):
 
 
 ## 답지 보고 풀음
+"""
+0 (0,0)	1 (0,1)	2 (0,2)	3 (1,0)	4 (1,1)	5 (1,2)	6 (2,0)	7 (2,1)	8 (2,2)
+
+현재 인덱스를 n으로 나눈 몫, 나머지
+(몫, 나머지)
+
+"""
 def solution2(n, left, right):
     result = []
     for num in range(left, right+1):
