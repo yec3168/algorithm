@@ -7,6 +7,7 @@ def solution(numbers):
     return max(numbers)
 
 
+
 # 반복문은 시간 초과 
 def solution2(numbers):
     dp =[]
