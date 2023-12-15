@@ -10,7 +10,7 @@ check_numbers = list(map(int, sys.stdin.readline().split()))
 
 have_numbers.sort()
 
-
+ 
 # 이분탐색?
 def list_sol2():
     global check_numbers, have_numbers
